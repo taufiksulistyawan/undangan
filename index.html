@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding - Taufik & Jihan</title>
+
+<!-- 90s Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Courier+Prime:wght@400;700&family=Special+Elite&family=Impact&family=Creepster&display=swap" rel="stylesheet">
+
+<style>
+/* ================= RESET & 90s VIBE ================= */
+* {margin:0;padding:0;box-sizing:border-box}
+body {
+  font-family:'Special Elite', monospace;
+  background:#f4f1ea url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23fff" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="%23ddd" opacity="0.15"/><circle cx="50" cy="10" r="0.8" fill="%23eee" opacity="0.2"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+  color:#111;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* ================= VHS + CRT EFFECTS ================= */
+body::before {
+  content:'';position:fixed;top:0;left:0;width:100%;height:100%;
+  background:radial-gradient(circle at 50% 0%, rgba(255,0,120,0.08) 0%, transparent 50%);
+  border-radius:0 0 50% 50%/0 0 8% 8%;
+  pointer-events:none;z-index:999;
+}
+
+.vhs-scanlines {
+  position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1000;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.06) 2px,rgba(0,0,0,0.06) 4px);
+  animation:scanline 0.08s linear infinite;
+}
+@keyframes scanline{0%{transform:translateY(0);}100%{transform:translateY(4px);}}
+
+.vhs-noise {
+  position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1001;
+  background:'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><filter id="noise"><feTurbulence baseFrequency="0.8" numOctaves="4" /><feBlend mode="multiply" in="SourceGraphic" /></filter><rect width="300" height="300" filter="url(%23noise)" opacity="0.04"/></svg>';
+  animation:noise 0.2s steps(1) infinite;
+}
+
+/* ================= TYPOGRAPHY 90s CONCERT ================= */
+h1,h2{font-family:'Oswald',sans-serif;letter-spacing:4px;text-transform:uppercase}
+h1{font-size:4rem;font-weight:700;background:linear-gradient(45deg,#ff006e,#8338ec,#3a86ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:4px 4px 0 #000}
+h2{font-size:2.2rem;color:#000;text-shadow:3px 3px 0 #fff,0 0 10px rgba(0,0,0,0.3);position:relative;margin-bottom:30px}
+h2::after{content:'';position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);width:60px;height:4px;background:linear-gradient(90deg,#ff006e,#8338ec)}
+
+/* ================= SECTIONS ================= */
+section{padding:100px 20px;max-width:1200px;margin:0 auto;text-align:center}
+
+/* ================= LOADER ================= */
+#loader{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;color:#00ff9f;display:flex;justify-content:center;align-items:center;z-index:99999;cursor:pointer;font-family:'Courier Prime',monospace;transition:opacity 0.5s}
+.vhs-text{font-size:3rem;animation:blink 1s infinite,vhs-glitch 2s infinite;text-shadow:0 0 20px #00ff9f,0 0 30px #00ff9f;letter-spacing:8px}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
+@keyframes vhs-glitch{0%,95%{transform:translate(0);}97%{transform:translate(-3px,2px);}99%{transform:translate(2px,-2px);}100%{transform:translate(0);}}
+#loader.fade-out{opacity:0}
+
+/* ================= RETRO TICKET COVER ================= */
+#cover{height:100vh;display:flex;justify-content:center;align-items:center;background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;background-attachment:fixed}
+.retro-ticket{background:linear-gradient(145deg,#f8f8f8,#e1e1e1);border:5px solid #000;box-shadow:15px 15px 0 #000,inset 0 0 30px rgba(0,0,0,0.1);padding:50px;max-width:550px;transform:rotate(-1.5deg);animation:ticketFloat 6s ease-in-out infinite;position:relative;overflow:hidden}
+@keyframes ticketFloat{0%,100%{transform:rotate(-1.5deg) translateY(0);}50%{transform:rotate(-0.5deg) translateY(-15px);}}
+.ticket-number{position:absolute;top:-20px;right:-20px;background:#ff006e;color:#fff;padding:8px 15px;font-family:'Courier Prime',monospace;font-size:13px;border:3px solid #000;border-radius:20px;box-shadow:5px 5px 0 #000}
+.ticket-top,.ticket-bottom{border-bottom:4px dashed #000;padding-bottom:20px;margin-bottom:25px}
+.ticket-main p{margin:15px 0}
+.guest-name{font-size:1.3rem;color:#00ff9f;font-weight:700;text-shadow:2px 2px 0 #000}
+.stamp{position:absolute;background:radial-gradient(circle,#ffcc00,#ff9900);color:#000;padding:12px 18px;font-family:'Impact',sans-serif;font-size:16px;font-weight:900;border:3px solid #000;transform:rotate(18deg);box-shadow:5px 5px 0 #000;right:15%;top:25%}
+.love-stamp{top:45%;right:10%;transform:rotate(-22deg);background:radial-gradient(circle,#ff69b4,#ff1493)}
+
+/* ================= BUTTONS 90s ================= */
+button{padding:18px 35px;border:3px solid #000;background:#000;color:#fff;font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;letter-spacing:3px;cursor:pointer;transition:all 0.4s;position:relative;overflow:hidden;font-weight:700}
+button:hover{background:#fff;color:#000;transform:translateY(-3px) scale(1.05);box-shadow:0 12px 30px rgba(0,0,0,0.4)}
+button:active{transform:translateY(-1px)}
+
+/* ================= RETRO SPEAKER ================= */
+#musicBtn{position:fixed;bottom:35px;right:35px;width:85px;height:85px;border-radius:50%;border:4px solid #000;background:linear-gradient(145deg,#222,#111);color:#00ff9f;font-size:32px;cursor:pointer;z-index:1002;box-shadow:12px 12px 0 #000,inset 0 0 25px rgba(0,255,159,0.3);transition:all 0.4s;position:relative;overflow:hidden}
+#musicBtn:hover{transform:scale(1.15) rotate(180deg);box-shadow:18px 18px 0 #ff006e,inset 0 0 35px #00ff9f}
+.cassette-display{position:absolute;bottom:-30px;right:0;background:#000;color:#00ff9f;font-family:'Courier Prime',monospace;font-size:11px;padding:5px 12px;border:2px solid #00ff9f;border-radius:4px;letter-spacing:1px;text-transform:uppercase}
+
+/* ================= COUPLE CARDS ================= */
+.couple{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:50px}
+.card{width:240px;border:4px solid #000;padding:25px;background:#fff;box-shadow:12px 12px 0 #000;transition:all 0.5s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:5px;background:linear-gradient(90deg,transparent,#ff006e,transparent);transition:left 0.6s}
+.card:hover{transform:translateY(-15px) scale(1.03);box-shadow:20px 20px 0 #ff006e}
+.card:hover::before{left:100%}
+.card img{width:100%;height:280px;object-fit:cover;border:3px solid #000}
+
+/* ================= FILMSTRIP GALLERY ================= */
+.gallery-filmstrip{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:30px 0;background:linear-gradient(90deg,#0005 0%,transparent 10%,transparent 90%,#0005 100%);scrollbar-width:none}
+.gallery-filmstrip::-webkit-scrollbar{display:none}
+.gallery-filmstrip img{min-width:280px;height:350px;object-fit:cover;border:5px solid #000;box-shadow:10px 10px 0 #000, inset 0 0 25px rgba(255,255,255,0.3);transform:perspective(1200px) rotateY(8deg);transition:all 0.5s}
+.gallery-filmstrip img:hover{transform:perspective(1200px) rotateY(0) scale(1.08);box-shadow:18px 18px 0 #ff006e,inset 0 0 40px rgba(255,255,255,0.6)}
+
+/* ================= FORM & ELEMENTS ================= */
+input,textarea,select{padding:12px;margin:15px 0;width:90%;max-width:500px;border:2px solid #000;background:#fff;font-family:'Courier Prime',monospace;font-size:16px}
+.rek-box{border:3px dashed #000;padding:30px;background:#fff;display:inline-block;box-shadow:8px 8px 0 #000}
+#listKomentar{max-width:600px;margin:0 auto;text-align:left}
+.comment-item{display:flex;gap:15px;align-items:flex-start;margin:25px 0;padding:20px;border:2px solid #ddd;background:#f9f9f9;box-shadow:5px 5px 0 #ccc}
+.avatar{width:50px;height:50px;border-radius:50%;background:linear-gradient(45deg,#ff006e,#8338ec);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;flex-shrink:0}
+.comment-content{background:#fff;padding:15px 20px;border-radius:20px;max-width:70%;box-shadow:0 5px 15px rgba(0,0,0,0.1);text-align:left}
+.comment-name{font-weight:700;font-size:16px;margin-bottom:5px}
+.comment-time{font-size:12px;color:#666}
+
+/* ================= MAP ================= */
+.map-container{position:relative;height:400px;border:4px solid #000;border-radius:15px;overflow:hidden;box-shadow:10px 10px 0 #000;margin:30px 0}
+.map-container iframe{width:100%;height:100%;border:0}
+
+/* ================= FADE ANIMATIONS ================= */
+.fade{opacity:0;transform:translateY(50px);transition:all 1s ease}
+.fade.show{opacity:1;transform:translateY(0)}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width:768px){
+  .retro-ticket{padding:30px;max-width:90%;transform:rotate(-0.8deg)}
+  h1{font-size:2.5rem}
+  h2{font-size:1.8rem}
+  .couple{gap:20px}
+  .card{width:200px}
+  section{padding:60px 15px}
+  #musicBtn{bottom:20px;right:20px;width:70px;height:70px;font-size:26px}
+}
+</style>
+</head>
+
+<body>
+<!-- VHS EFFECTS -->
+<div class="vhs-scanlines"></div>
+<div class="vhs-noise"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="vhs-text">▶ PLAY OASIS WEDDING</div>
+</div>
+
+<!-- COVER TICKET -->
+<section id="cover">
+  <div class="retro-ticket">
+    <span class="ticket-number">TIX-2026-001</span>
+    <div class="ticket-top">
+      <h1 class="band-title">TAUFIK & JIHAN</h1>
+      <p class="tour-text">LIVE WEDDING TOUR 2026</p>
+    </div>
+    <div class="ticket-main">
+      <div class="stamp">VIP</div>
+      <div class="stamp love-stamp">LOVE</div>
+      <p id="guest" class="guest-name"></p>
+      <button onclick="openInvite()">ADMIT ONE →</button>
+    </div>
+    <div class="ticket-bottom">
+      <span style="font-family:'Courier Prime',monospace;font-size:12px;">Non Transferable • Void if Altered</span>
+    </div>
+  </div>
+</section>
+
+<!-- MUSIC -->
+<audio id="music" loop preload="auto">
+  <source src="assets/audio/music.mp3">
+  <!-- Ganti dengan musik Anda: assets/audio/wedding.mp3 -->
+</audio>
+
+<!-- RETRO SPEAKER -->
+<button id="musicBtn" onclick="toggleMusic()" title="Toggle Music">
+  <span style="font-size:20px;">🔊</span>
+  <div class="cassette-display">WEDDING MIX</div>
+</button>
+
+<!-- MAIN CONTENT -->
+<div id="main" style="display:none">
+
+<!-- COUPLE -->
+<section class="fade">
+  <h2>THE COUPLE</h2>
+  <div class="couple">
+    <div class="card">
+      <img src="assets/images/t.jpg" alt="Taufik" loading="lazy">
+      <h3 style="margin-top:15px">Taufik</h3>
+    </div>
+    <div class="card">
+      <img src="assets/images/j.jpg" alt="Jihan" loading="lazy">
+      <h3 style="margin-top:15px">Jihan</h3>
+    </div>
+  </div>
+</section>
+
+<!-- AYAT -->
+<section class="fade">
+  <h2>QS Ar-Rum:21</h2>
+  <p style="font-size:1.3rem;max-width:600px;margin:0 auto;line-height:1.8;">"Dan di antara tanda-tanda kekuasaan-Nya Dia menciptakan untukmu pasangan hidup dari jenismu sendiri, supaya kamu cenderung dan merasa tentram kepadanya..."</p>
+  <br><p style="font-style:italic;color:#666;font-size:1.1rem;"><i>Makna: Pernikahan adalah bentuk kasih sayang Allah SWT</i></p>
+</section>
+
+<!-- GALLERY -->
+<section class="fade">
+  <h2>MEMORIES</h2>
+  <div class="gallery-filmstrip">
+    <img src="assets/images/1.jpg" alt="Memory 1" loading="lazy">
+    <img src="assets/images/2.jpg" alt="Memory 2" loading="lazy">
+    <img src="assets/images/3.jpg" alt="Memory 3" loading="lazy">
+    <img src="assets/images/4.jpg" alt="Memory 4" loading="lazy">
+    <img src="assets/images/5.jpg" alt="Memory 5" loading="lazy">
+    <img src="assets/images/6.jpg" alt="Memory 5" loading="lazy">
+    <img src="assets/images/7.jpg" alt="Memory 5" loading="lazy">
+    <img src="assets/images/8.jpg" alt="Memory 5" loading="lazy">
+    <img src="assets/images/9.jpg" alt="Memory 5" loading="lazy">
+    <img src="assets/images/10.jpg" alt="Memory 5" loading="lazy">
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="fade">
+  <h2>LOCATION</h2>
+  <div style="background:#fff;padding:30px;border:4px solid #000;border-radius:20px;margin:30px 0;box-shadow:10px 10px 0 #000;max-width:800px;margin-left:auto;margin-right:auto">
+    <h3 style="color:#ff006e;margin-bottom:10px">🏰 Alila Hotel Solo</h3>
+    <p style="font-size:1.2rem;margin-bottom:20px">📍 Jl. Slamet Riyadi St No 562<br>Kota Surakarta 57144</p>
+  </div>
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7910.292749976358!2d110.78253179768983!3d-7.559014572805426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a143836b69543%3A0x5f9e70ee23da6ca4!2sAlila%20Solo!5e0!3m2!1sen!2sid!4v1777427880652!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+  <div style="margin-top:30px">
+    <a href="https://maps.app.goo.gl/KqLqFxwLPd98dn4L9" target="_blank" style="display:inline-block;margin:10px;padding:15px 30px;background:#25D366;color:white;text-decoration:none;border-radius:30px;font-weight:700;box-shadow:5px 5px 0 #000;transition:all 0.3s">📱 Buka Maps</a>
+    <a href="https://wa.me/6282376697374?text=Halo%20admin%20wedding%20Taufik%20Jihan,%20saya%20menuju%20lokasi!" target="_blank" style="display:inline-block;margin:10px;padding:15px 30px;background:#000;color:#00ff9f;text-decoration:none;border-radius:30px;font-weight:700;border:3px solid #00ff9f;box-shadow:5px 5px 0 #000;transition:all 0.3s">💬 Minta Lokasi</a>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="fade">
+  <h2>UCAPAN & KONFIRMASI</h2>
+  <div style="max-width:600px;margin:0 auto">
+    <input type="text" id="nama" placeholder="Nama Lengkap Anda">
+    <select id="status">
+      <option>Hadir 💒</option>
+      <option>Tidak Hadir 😢</option>
+    </select>
+    <textarea id="pesan" placeholder="Ucapan pernikahan untuk Taufik & Jihan..." rows="4"></textarea>
+    <button onclick="kirimWA()">💬 Kirim via WhatsApp</button>
+    <button onclick="kirimKomentar()" style="background:#ff006e;border-color:#ff006e;margin-left:10px">💖 Simpan Ucapan</button>
+  </div>
+  <div id="listKomentar" style="margin-top:50px"></div>
+</section>
+
+<!-- REKENING -->
+<section class="fade">
+  <h2>SEND GIFT</h2>
+  <div class="rek-box">
+    <p><strong>🏦 Bank BCA</strong></p>
+    <p id="noRek" style="font-size:2rem;font-weight:700;margin:20px 0">1234567890</p>
+    <p style="font-size:1.2rem">a.n Jenifer Jesika</p>
+    <button onclick="copyRek()">📋 Copy Rekening</button>
+  </div>
+</section>
+
+</div>
+
+<script>
+// ================= STATE =================
+let isPlaying=false;
+
+// ================= INIT =================
+document.addEventListener("DOMContentLoaded",()=>{
+  const loader=document.getElementById("loader");
+  loader.onclick=()=>{
+    loader.classList.add("fade-out");
+    setTimeout(()=>loader.style.display="none",500);
+  };
+  tampilKomentar();
+  setTimeout(()=>window.dispatchEvent(new Event('scroll')),1000);
+});
+
+// ================= OPEN INVITE =================
+function openInvite(){
+  document.getElementById('cover').style.display='none';
+  document.getElementById('main').style.display='block';
+  
+  const music=document.getElementById('music');
+  music.volume=0;
+  music.play().then(()=>{
+    isPlaying=true;
+    updateMusicIcon();
+    let vol=0;
+    const fade=setInterval(()=>{
+      vol+=0.04;
+      music.volume=Math.min(vol,0.4);
+      if(vol>=0.4)clearInterval(fade);
+    },120);
+  }).catch(e=>console.log("Music ready"));
+}
+
+// ================= MUSIC CONTROLS - FIXED VERSION =================
+function toggleMusic() {
+  const music = document.getElementById('music');
+  if (isPlaying) {
+    music.pause();
+    isPlaying = false;
+  } else {
+    music.play().catch(e => console.log("Music ready"));
+    isPlaying = true;
+  }
+  updateMusicIcon();
+}
+
+function updateMusicIcon() {
+  const btn = document.getElementById('musicBtn');
+  const iconSpan = btn.querySelector('span');  // 🎯 Target span yang ADA di HTML
+  
+  if (iconSpan) {
+    iconSpan.innerHTML = isPlaying ? '⏸' : '▶';
+    btn.title = isPlaying ? 'Pause Music' : 'Play Music';
+  }
+  console.log('🎵 Music:', isPlaying ? 'PLAYING' : 'PAUSED');
+}
+
+// ================= WA =================
+function kirimWA(){
+  const n=document.getElementById("nama").value.trim();
+  const s=document.getElementById("status").value;
+  const p=document.getElementById("pesan").value.trim();
+  if(!n){alert("Isi nama!");return;}
+  const nomor="6282376697374"; // 👈 GANTI!
+  const text=`Halo Admin Wedding Taufik & Jihan!\n\n👤 Nama: ${n}\n✅ Status: ${s}\n\n💌 Ucapan:\n${p||"Tidak ada ucapan"}`;
+  window.open(`https://wa.me/${nomor}?text=${encodeURIComponent(text)}`,'_blank');
+}
+
+// ================= KOMENTAR =================
+function kirimKomentar(){
+  const n=document.getElementById("nama").value.trim();
+  const p=document.getElementById("pesan").value.trim();
+  if(!n||!p){alert("Isi nama & ucapan!");return;}
+  let data=JSON.parse(localStorage.getItem("komentarWedding"))||[];
+  data.unshift({nama:n,pesan:p,waktu:new Date().toLocaleString('id-ID'),id:Date.now()});
+  if(data.length>50)data=data.slice(0,50);
+  localStorage.setItem("komentarWedding",JSON.stringify(data));
+  document.getElementById("nama").value="";
+  document.getElementById("pesan").value="";
+  tampilKomentar();
+  alert("💖 Ucapan tersimpan!");
+}
+function tampilKomentar(){
+  const list=document.getElementById("listKomentar");
+  list.innerHTML="";
+  let data=JSON.parse(localStorage.getItem("komentarWedding"))||[];
+  if(data.length===0){list.innerHTML='<p style="color:#666;font-style:italic;">Belum ada ucapan... 💕</p>';return;}
+  data.forEach(item=>{
+    const div=document.createElement("div");
+    div.className="comment-item";
+    div.innerHTML=`<div class="avatar">${item.nama.charAt(0).toUpperCase()}</div><div class="comment-content"><div class="comment-name">${item.nama}</div><div class="comment-text">${item.pesan}</div><div class="comment-time">${item.waktu}</div></div>`;
+    list.appendChild(div);
+  });
+}
+
+// ================= COPY =================
+function copyRek(){
+  const norek="1234567890";
+  navigator.clipboard.writeText(norek).then(()=>alert(`✅ Disalin!\n${norek}`)).catch(()=>{
+    const ta=document.createElement("textarea");ta.value=norek;document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);alert(`✅ Disalin!\n${norek}`);
+  });
+}
+
+// ================= FADE =================
+const faders=document.querySelectorAll(".fade");
+window.addEventListener("scroll",()=>{faders.forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight-100)el.classList.add("show")})});
+
+// ================= GUEST NAME =================
+const params=new URLSearchParams(location.search);
+const guest=params.get("to");
+if(guest)document.getElementById("guest").innerText=`For ${guest.toUpperCase()}`;
+</script>
+
+</body>
+</html>
