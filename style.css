@@ -1,0 +1,413 @@
+/* ================= RESET & 90s VIBE ================= */
+* {margin:0;padding:0;box-sizing:border-box}
+body {
+  font-family:'Special Elite', monospace;
+  background:#f4f1ea url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23fff" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="%23ddd" opacity="0.15"/><circle cx="50" cy="10" r="0.8" fill="%23eee" opacity="0.2"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+  color:#111;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* ================= VHS + CRT EFFECTS ================= */
+body::before {
+  content:'';position:fixed;top:0;left:0;width:100%;height:100%;
+  background:radial-gradient(circle at 50% 0%, rgba(255,0,120,0.08) 0%, transparent 50%);
+  border-radius:0 0 50% 50%/0 0 8% 8%;
+  pointer-events:none;z-index:999;
+}
+
+.vhs-scanlines {
+  position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1000;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.06) 2px,rgba(0,0,0,0.06) 4px);
+  animation:scanline 0.08s linear infinite;
+}
+@keyframes scanline{0%{transform:translateY(0);}100%{transform:translateY(4px);}}
+
+.vhs-noise {
+  position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1001;
+  background:'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><filter id="noise"><feTurbulence baseFrequency="0.8" numOctaves="4" /><feBlend mode="multiply" in="SourceGraphic" /></filter><rect width="300" height="300" filter="url(%23noise)" opacity="0.04"/></svg>';
+  animation:noise 0.2s steps(1) infinite;
+}
+
+/* ================= TYPOGRAPHY 90s CONCERT ================= */
+h1,h2{font-family:'Oswald',sans-serif;letter-spacing:4px;text-transform:uppercase}
+h1{font-size:4rem;font-weight:700;background:linear-gradient(45deg,#ff006e,#8338ec,#3a86ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:4px 4px 0 #000}
+h2{font-size:2.2rem;color:#000;text-shadow:3px 3px 0 #fff,0 0 10px rgba(0,0,0,0.3);position:relative;margin-bottom:30px}
+h2::after{content:'';position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);width:60px;height:4px;background:linear-gradient(90deg,#ff006e,#8338ec)}
+
+/* ================= SECTIONS ================= */
+section{padding:100px 20px;max-width:1200px;margin:0 auto;text-align:center}
+
+/* ================= LOADER ================= */
+#loader{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;color:#00ff9f;display:flex;justify-content:center;align-items:center;z-index:99999;cursor:pointer;font-family:'Courier Prime',monospace;transition:opacity 0.5s}
+.vhs-text{font-size:3rem;animation:blink 1s infinite,vhs-glitch 2s infinite;text-shadow:0 0 20px #00ff9f,0 0 30px #00ff9f;letter-spacing:8px}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
+@keyframes vhs-glitch{0%,95%{transform:translate(0);}97%{transform:translate(-3px,2px);}99%{transform:translate(2px,-2px);}100%{transform:translate(0);}}
+#loader.fade-out{opacity:0}
+
+/* ================= RETRO TICKET COVER ================= */
+#cover{height:100vh;display:flex;justify-content:center;align-items:center;background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;background-size:cover;background-position:center;background-attachment:fixed}
+.retro-ticket{background:linear-gradient(145deg,#f8f8f8,#e1e1e1);border:5px solid #000;box-shadow:15px 15px 0 #000,inset 0 0 30px rgba(0,0,0,0.1);padding:50px;max-width:550px;transform:rotate(-1.5deg);animation:ticketFloat 6s ease-in-out infinite;position:relative;overflow:hidden}
+@keyframes ticketFloat{0%,100%{transform:rotate(-1.5deg) translateY(0);}50%{transform:rotate(-0.5deg) translateY(-15px);}}
+.ticket-number{position:absolute;top:-20px;right:-20px;background:#ff006e;color:#fff;padding:8px 15px;font-family:'Courier Prime',monospace;font-size:13px;border:3px solid #000;border-radius:20px;box-shadow:5px 5px 0 #000}
+.ticket-top,.ticket-bottom{border-bottom:4px dashed #000;padding-bottom:20px;margin-bottom:25px}
+.ticket-main p{margin:15px 0}
+.guest-name{font-size:1.3rem;color:#00ff9f;font-weight:700;text-shadow:2px 2px 0 #000}
+.stamp{position:absolute;background:radial-gradient(circle,#ffcc00,#ff9900);color:#000;padding:12px 18px;font-family:'Impact',sans-serif;font-size:16px;font-weight:900;border:3px solid #000;transform:rotate(18deg);box-shadow:5px 5px 0 #000;right:15%;top:25%}
+.love-stamp{top:45%;right:10%;transform:rotate(-22deg);background:radial-gradient(circle,#ff69b4,#ff1493)}
+
+/* ================= BUTTONS 90s ================= */
+button{padding:18px 35px;border:3px solid #000;background:#000;color:#fff;font-family:'Oswald',sans-serif;font-size:1.1rem;text-transform:uppercase;letter-spacing:3px;cursor:pointer;transition:all 0.4s;position:relative;overflow:hidden;font-weight:700}
+button:hover{background:#fff;color:#000;transform:translateY(-3px) scale(1.05);box-shadow:0 12px 30px rgba(0,0,0,0.4)}
+button:active{transform:translateY(-1px)}
+
+/* ================= RETRO SPEAKER ================= */
+#musicBtn{position:fixed;bottom:35px;right:35px;width:85px;height:85px;border-radius:50%;border:4px solid #000;background:linear-gradient(145deg,#222,#111);color:#00ff9f;font-size:32px;cursor:pointer;z-index:1002;box-shadow:12px 12px 0 #000,inset 0 0 25px rgba(0,255,159,0.3);transition:all 0.4s;position:relative;overflow:hidden}
+#musicBtn:hover{transform:scale(1.15) rotate(180deg);box-shadow:18px 18px 0 #ff006e,inset 0 0 35px #00ff9f}
+.cassette-display{position:absolute;bottom:-30px;right:0;background:#000;color:#00ff9f;font-family:'Courier Prime',monospace;font-size:11px;padding:5px 12px;border:2px solid #00ff9f;border-radius:4px;letter-spacing:1px;text-transform:uppercase}
+
+/* ================= COUPLE CARDS ================= */
+.couple{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:50px}
+.card{width:240px;border:4px solid #000;padding:25px;background:#fff;box-shadow:12px 12px 0 #000;transition:all 0.5s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:5px;background:linear-gradient(90deg,transparent,#ff006e,transparent);transition:left 0.6s}
+.card:hover{transform:translateY(-15px) scale(1.03);box-shadow:20px 20px 0 #ff006e}
+.card:hover::before{left:100%}
+.card img{width:100%;height:280px;object-fit:cover;border:3px solid #000}
+
+/* ================= FILMSTRIP GALLERY ================= */
+.gallery-filmstrip{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:30px 0;background:linear-gradient(90deg,#0005 0%,transparent 10%,transparent 90%,#0005 100%);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gallery-filmstrip::-webkit-scrollbar{display:none}
+.gallery-filmstrip img{min-width:280px;height:350px;object-fit:cover;border:5px solid #000;box-shadow:10px 10px 0 #000, inset 0 0 25px rgba(255,255,255,0.3);transform:perspective(1200px) rotateY(8deg);transition:all 0.5s}
+.gallery-filmstrip img:hover{transform:perspective(1200px) rotateY(0) scale(1.08);box-shadow:18px 18px 0 #ff006e,inset 0 0 40px rgba(255,255,255,0.6)}
+
+/* ================= FORM & ELEMENTS ================= */
+input,textarea,select{padding:12px;margin:15px 0;width:90%;max-width:500px;border:2px solid #000;background:#fff;font-family:'Courier Prime',monospace;font-size:16px}
+.rek-box{border:3px dashed #000;padding:30px;background:#fff;display:inline-block;box-shadow:8px 8px 0 #000}
+#listKomentar{max-width:600px;margin:0 auto;text-align:left}
+.comment-item{display:flex;gap:15px;align-items:flex-start;margin:25px 0;padding:20px;border:2px solid #ddd;background:#f9f9f9;box-shadow:5px 5px 0 #ccc;flex-wrap:wrap}
+.avatar{width:50px;height:50px;border-radius:50%;background:linear-gradient(45deg,#ff006e,#8338ec);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;flex-shrink:0}
+.comment-content{background:#fff;padding:15px 20px;border-radius:20px;max-width:70%;box-shadow:0 5px 15px rgba(0,0,0,0.1);text-align:left;flex:1}
+.comment-name{font-weight:700;font-size:16px;margin-bottom:5px}
+.comment-time{font-size:12px;color:#666}
+
+/* ================= BUTTON ANIMATIONS - MAPS & WA ================= */
+/* Ripple effect container */
+.ripple-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ================= Save Calendar ================= */
+.calendar-btn {
+  padding: 15px 35px;
+  background: linear-gradient(45deg, #ff006e, #8338ec);
+  color: white;
+  border: 3px solid #000;
+  border-radius: 30px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow: 5px 5px 0 #000;
+  transition: all 0.3s;
+}
+
+.calendar-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 8px 8px 0 #000, 0 0 20px #ff006e;
+}
+
+/* ================= COUNTDOWN 90s LED DISPLAY ================= */
+#countdown-section {
+  background: linear-gradient(145deg, #000 0%, #111 50%, #222 100%);
+  border-top: 5px solid #ff006e;
+  border-bottom: 5px solid #8338ec;
+  position: relative;
+  overflow: hidden;
+}
+
+#countdown-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff006e, #8338ec, #3a86ff, #ff006e);
+  animation: scanline-countdown 3s linear infinite;
+}
+
+@keyframes scanline-countdown {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.countdown-display {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.count-item {
+  text-align: center;
+  background: linear-gradient(145deg, #ff006e, #8338ec);
+  padding: 1.5rem 1rem;
+  border: 4px solid #000;
+  border-radius: 12px;
+  box-shadow: 
+    8px 8px 0 #000,
+    inset 0 0 20px rgba(255,255,255,0.2),
+    0 0 30px rgba(255,0,110,0.5);
+  min-width: 100px;
+  position: relative;
+  overflow: hidden;
+  animation: countdown-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes countdown-glow {
+  0% { box-shadow: 8px 8px 0 #000, inset 0 0 20px rgba(255,255,255,0.2), 0 0 30px rgba(255,0,110,0.5); }
+  100% { box-shadow: 8px 8px 0 #000, inset 0 0 30px rgba(255,255,255,0.4), 0 0 50px rgba(255,0,110,0.8); }
+}
+
+#days, #hours, #minutes, #seconds {
+  display: block;
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 900;
+  color: #00ff9f;
+  text-shadow: 
+    0 0 20px #00ff9f,
+    3px 3px 0 #000,
+    0 0 40px #00ff9f;
+  letter-spacing: 0.1em;
+  min-height: 3rem;
+  line-height: 1;
+}
+
+.count-label {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.8rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 0.5rem;
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .countdown-display {
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+  }
+  
+  .count-item {
+    min-width: 80px;
+    padding: 1rem 0.75rem;
+  }
+  
+  #days, #hours, #minutes, #seconds {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown-display {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .count-item {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+/* Ripple animation */
+.ripple-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ripple-btn:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Pulse hover */
+.ripple-btn {
+  animation: pulse-hover 2s infinite;
+}
+
+@keyframes pulse-hover {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* Maps button specific */
+.maps-btn {
+  background: #25D366 !important;
+  color: white !important;
+  box-shadow: 5px 5px 0 #000 !important;
+  animation: pulse-maps 2s infinite;
+}
+
+@keyframes pulse-maps {
+  0% { box-shadow: 5px 5px 0 #000, 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { box-shadow: 5px 5px 0 #000, 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 5px 5px 0 #000, 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.location-btn {
+  background: #000 !important;
+  color: #00ff9f !important;
+  border: 3px solid #00ff9f !important;
+  box-shadow: 5px 5px 0 #000 !important;
+  animation: pulse-location 2s infinite;
+}
+
+@keyframes pulse-location {
+  0% { box-shadow: 5px 5px 0 #000, 0 0 0 0 rgba(0, 255, 159, 0.7); }
+  70% { box-shadow: 5px 5px 0 #000, 0 0 0 15px rgba(0, 255, 159, 0); }
+  100% { box-shadow: 5px 5px 0 #000, 0 0 0 0 rgba(0, 255, 159, 0); }
+}
+
+/* Active states */
+.ripple-btn:active {
+  transform: translateY(-2px) scale(0.98) !important;
+  box-shadow: 2px 2px 0 #000 !important;
+}
+
+/* ================= MAP ================= */
+.map-container{position:relative;height:400px;border:4px solid #000;border-radius:15px;overflow:hidden;box-shadow:10px 10px 0 #000;margin:30px 0}
+.map-container iframe{width:100%;height:100%;border:0}
+
+/* ================= FADE ANIMATIONS ================= */
+.fade{opacity:0;transform:translateY(50px);transition:all 1s ease}
+.fade.show{opacity:1;transform:translateY(0)}
+
+/* ================= RESPONSIVE - MOBILE FIRST ================= */
+/* Tablet (768px ke atas) */
+@media (max-width:1024px){
+  .couple{gap:30px}
+  .card{width:220px}
+}
+
+/* Mobile Large (481px - 767px) */
+@media (max-width:768px){
+  /* Typography */
+  h1{font-size:2.8rem;letter-spacing:2px}
+  h2{font-size:1.9rem;letter-spacing:2px;margin-bottom:25px}
+  h2::after{width:50px;height:3px;bottom:-10px}
+  
+  /* Sections */
+  section{padding:70px 15px}
+  
+  /* Cover */
+  #cover{background-attachment:scroll} /* Fixed background tidak work di iOS */
+  .retro-ticket{padding:35px;max-width:95%;transform:rotate(-1deg)}
+  
+  /* Music Button */
+  #musicBtn{bottom:25px;right:25px;width:70px;height:70px;font-size:26px}
+  #musicBtn span{font-size:24px}
+  .cassette-display{font-size:10px;padding:4px 10px;bottom:-25px}
+  
+  /* Couple Cards */
+  .couple{gap:25px;flex-direction:column;align-items:center}
+  .card{width:280px;max-width:90vw}
+  .card img{height:250px}
+  
+  /* Gallery */
+  .gallery-filmstrip{gap:15px;padding:20px 0}
+  .gallery-filmstrip img{min-width:260px;height:320px}
+  
+  /* Form */
+  input,textarea,select{width:95%;margin:12px 0}
+  button{padding:16px 28px;font-size:1rem;letter-spacing:2px;margin:5px}
+  
+  /* Comments */
+  .comment-item{gap:12px;padding:18px;flex-direction:column;align-items:flex-start}
+  .comment-content{max-width:100%;margin-top:10px}
+  
+  /* Map */
+  .map-container{height:350px;margin:25px 0}
+}
+
+/* Mobile Medium (361px - 480px) */
+@media (max-width:480px){
+  h1{font-size:2.2rem;letter-spacing:1.5px}
+  h2{font-size:1.6rem;letter-spacing:1.5px;margin-bottom:20px}
+  h2::after{width:40px;height:2px}
+  
+  section{padding:60px 12px}
+  .retro-ticket{padding:25px;transform:rotate(-0.5deg)}
+  .ticket-number{font-size:11px;padding:6px 12px;top:-15px;right:-15px}
+  
+  .stamp{font-size:14px;padding:10px 14px;right:10%;top:20%}
+  .love-stamp{top:40%;right:5%;font-size:14px;padding:10px 14px}
+  
+  .couple{gap:20px}
+  .card{width:260px;padding:20px}
+  .card img{height:220px}
+  
+  .gallery-filmstrip{gap:12px;padding:15px 0}
+  .gallery-filmstrip img{min-width:240px;height:290px}
+  
+  button{padding:14px 24px;font-size:0.95rem;margin:8px 4px}
+  
+  .rek-box{padding:25px}
+  #noRek{font-size:1.8rem}
+  
+  /* Loader */
+  .vhs-text{font-size:2.2rem;letter-spacing:5px}
+  
+  /* Music button */
+  #musicBtn{bottom:20px;right:20px;width:60px;height:60px;font-size:22px}
+}
+
+/* Mobile Small (320px - 360px) */
+@media (max-width:360px){
+  h1{font-size:1.9rem}
+  h2{font-size:1.4rem}
+  section{padding:50px 10px}
+  
+  .retro-ticket{padding:20px}
+  .couple .card{width:240px;padding:18px}
+  .card img{height:200px}
+  
+  .gallery-filmstrip img{min-width:220px;height:270px}
+  
+  button{padding:12px 20px;font-size:0.9rem}
+  #musicBtn{width:55px;height:55px;font-size:20px;right:15px;bottom:15px}
+  
+  .vhs-text{font-size:1.9rem;letter-spacing:4px}
+}
+
+/* ================= TOUCH FRIENDLY ================= */
+@media (hover: none) and (pointer: coarse) {
+  button:active{transform:translateY(-1px) scale(0.98)}
+  .card:active{transform:translateY(-5px) scale(1.01)}
+  #musicBtn:active{transform:scale(1.1)}
+}
+
+/* ================= PREVENT ZOOM ON INPUT (iOS) ================= */
+input, textarea, select {
+  font-size:16px; /* Minimum 16px untuk iOS zoom prevention */
+}
